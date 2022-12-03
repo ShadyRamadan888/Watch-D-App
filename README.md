@@ -7,5 +7,8 @@
    
 <img src="https://user-images.githubusercontent.com/89228710/205462596-86f831ee-bb60-455b-99a4-7697f14dafd5.jpg" alt="drawing" width="200"/>
 
+<h3>Movie/TV Show Details<!h3>
+  
+ <h1><!h1>
 
 
