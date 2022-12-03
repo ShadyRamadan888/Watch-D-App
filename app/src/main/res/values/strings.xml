@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Watch-D</string>
+
+    <string name="whats_popular">What`s Popular?</string>
+    <string name="trending">Trending       </string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="top_rated">Top Rated Movies</string>
+
+    <string name="url">http://192.168.1.12:8080/api/</string>
+</resources>
