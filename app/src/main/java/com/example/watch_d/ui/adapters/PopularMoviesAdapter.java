@@ -23,7 +23,6 @@ public class PopularMoviesAdapter extends RecyclerView.Adapter<PopularMoviesAdap
     public  MusclesListAdapteListener musclesListAdapteListener;
     public static MovieResult movie_position = new MovieResult();
     private int i=0;
-    int backOrNot =-1;
 
 
 
@@ -50,21 +49,9 @@ public class PopularMoviesAdapter extends RecyclerView.Adapter<PopularMoviesAdap
         holder.binding.movieImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                i++;
-//                Handler handler = new Handler();
-//                handler.postDelayed(new Runnable() {
-//                    @Override
-//                    public void run() {
-//                        if (i == 1)
-//                        {
                             p = list.indexOf(list.get(position));
                             movie_position = list.get(position);
                             musclesListAdapteListener.onClickItem();
-//                        }
-//                        i=0;
-//                    }
-//                },500);
-
             }
         });
     }
