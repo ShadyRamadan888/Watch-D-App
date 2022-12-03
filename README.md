@@ -1,7 +1,8 @@
 # Watch-D-App
 ## Home Page
-- You can access to some catefories from Home Page such as popular, Trending and Top Rated Movies and TV Shows
-- By clicking in any movie/TV show you will move to Details Page 
+- You can access to some categories from Home Page such as popular, Trending and Top Rated Movies and TV Shows.
+- You can switch between moveis and TV shows by button which show in the image below.
+- By clicking in any movie/TV show you will move to Details Page.
 
 <h1><!h1>
    
