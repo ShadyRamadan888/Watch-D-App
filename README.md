@@ -13,7 +13,7 @@
 
 ## TV Show Details
   
-- In this page you will see more details about movie/TV show such as Image, Title, Overvie and Cast.
+- In this page you will see more details about movie/TV show such as Image, Title, Overview, Rating and Cast.
 - There are button to show short video about current movie/TV show   
  <h1><!h1>
 
