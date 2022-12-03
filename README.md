@@ -1,6 +1,6 @@
 # Watch-D-App
-<h3>Home Page<!h3>
-  
+##Home Page
+
  <h1><!h1>
    
 <img src="https://user-images.githubusercontent.com/89228710/205462718-c1c8e9d4-95f0-463e-9c57-5a94f7ef7f2c.jpg" alt="drawing" width="300"/>
