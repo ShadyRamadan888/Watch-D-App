@@ -13,6 +13,8 @@
 
 ## TV Show Details
   
+- In this page you will see more details about movie/TV show such as Image, Title, Overvie and Cast.
+- There are button to show short video about current movie/TV show   
  <h1><!h1>
 
 <img src="https://user-images.githubusercontent.com/89228710/205462929-e8f4dd7d-bb04-43bd-9dc1-13d0236c4ba2.jpg" alt="drawing" width="300"/>
