@@ -1,7 +1,7 @@
 # Watch-D-App
 ## Home Page
-
- <h1><!h1>
+- You can access to some catefories from Home Page such as popular, Trending and Top Rated Movies and TV Shows
+- By clicking in any movie/TV show you will move to Details Page 
    
 <img src="https://user-images.githubusercontent.com/89228710/205462718-c1c8e9d4-95f0-463e-9c57-5a94f7ef7f2c.jpg" alt="drawing" width="300"/>
    
