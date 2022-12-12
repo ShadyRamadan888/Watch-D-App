@@ -79,12 +79,11 @@ public class RetroBuild {
         return iGetVid.getPopularTVVideos(id,key);
     }
 
+    //TODO top rated movies.
     public Single<MovieRoot> getMoviesTopRated()
     {
         return moviesInterface.getMoviesTopRated("top_rated",16,key);
     }
-
-
     public Single<CastRoot> getMovieCast(int id)
     {
         return iCast.getMovieCast(id,key);

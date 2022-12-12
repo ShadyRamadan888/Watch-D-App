@@ -1,5 +1,6 @@
 package com.example.watch_d.ui.viewModels;
 
+import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
@@ -18,9 +19,7 @@ public class TopRatedMovieViewModel extends ViewModel {
 
     private final MutableLiveData<List<MovieResult>> topRatedMutableMoviesData = new MutableLiveData<>();
     private final RetroBuild retroBuild = new RetroBuild();
-
     CompositeDisposable compositeDisposable = new CompositeDisposable();
-
     public MutableLiveData<List<MovieResult>> getTopRatedMutableMoviesData()
     {
         return topRatedMutableMoviesData;

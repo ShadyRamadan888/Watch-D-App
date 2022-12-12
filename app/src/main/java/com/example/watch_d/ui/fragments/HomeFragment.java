@@ -1,12 +1,16 @@
 package com.example.watch_d.ui.fragments;
 
 
+import static androidx.recyclerview.widget.RecyclerView.Adapter.StateRestorationPolicy.ALLOW;
+import static androidx.recyclerview.widget.RecyclerView.Adapter.StateRestorationPolicy.PREVENT_WHEN_EMPTY;
+
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -55,7 +59,7 @@ public class HomeFragment extends Fragment {
     private final ImagesSliderViewModel imagesSliderViewModel = new ImagesSliderViewModel();
     private final TrendingMoviesViewMode trendingMoviesViewMode = new TrendingMoviesViewMode();
     private final PopularTVViewModel popularTVViewModel = new PopularTVViewModel();
-    private final TopRatedMovieViewModel topRatedMovieViewModel = new TopRatedMovieViewModel();
+    private  TopRatedMovieViewModel topRatedMovieViewModel;
     private PopularMoviesAdapter adapterPopMovies;
     private PopularTVAdapter popularTVAdapter;
     private TopRatedTVsAdapter topRatedTVsAdapter;
@@ -82,6 +86,9 @@ public class HomeFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
+        topRatedMovieViewModel = new ViewModelProvider(getViewModelStore(),getDefaultViewModelProviderFactory()).get(TopRatedMovieViewModel.class);
+
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_home, container, false);
         //Popular RecyclerView
@@ -106,15 +113,15 @@ public class HomeFragment extends Fragment {
         trendingBtnBackgroundClick();
 
 
-
-
-
         //Calling Skeleton method and sending *skeleton && skeleton Object && RecyclerViews && item_Layout*
         Skeleton(skeleton,skeletonObject,popularRecyclerView,R.layout.base_item);
         Skeleton(skeleton22,skeletonObject,trendingRecyclerView,R.layout.base_item);
 
 
+
         getSliderImages();
+        getTopRatedMovies();
+
         return view;
     }
 
@@ -125,12 +132,12 @@ public class HomeFragment extends Fragment {
 
         showDetailsFactory = new ShowDetailsFactory(view,getParentFragmentManager());
 
+
         popMovies.getText();
         popTV.getText();
 
         getPopularMovie();
         getTrendingDayMovies();
-        getTopRatedMovies();
 
     }
 
@@ -268,7 +275,6 @@ public class HomeFragment extends Fragment {
     public void getTopRatedMovies()
     {
         topRatedMovieViewModel.getTopRatedMovies();
-
         topRatedMovieViewModel.getTopRatedMutableMoviesData().observe(getViewLifecycleOwner(), new Observer<List<MovieResult>>() {
             @Override
             public void onChanged(List<MovieResult> movieResults) {
@@ -276,8 +282,8 @@ public class HomeFragment extends Fragment {
                 topRatedRecyclerView.setAdapter(topRatedMoviesAdapter);
             }
         });
+        //topRatedMoviesAdapter.setStateRestorationPolicy(ALLOW);
     }
-
 
     public void getTrendingWeekMovies()
     {
@@ -297,6 +303,5 @@ public class HomeFragment extends Fragment {
         skeletonObject = new SkeletonRecycler(skeleton,recyclerView,layout);
         skeletonObject.getSkeleton().showSkeleton();
     }
-
 
 }

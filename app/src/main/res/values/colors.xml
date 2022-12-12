@@ -9,4 +9,12 @@
     <color name="white">#FFFFFFFF</color>
     <color name="app_background2">#000000</color>
     <color name="app_background">#151c25</color>
+
+    <color name="colorBlack">#000000</color>
+    <color name="colorWhite">#FFFFFF</color>
+    <color name="colorRed">#C11515</color>
+    <color name="yellow">#F19C1D</color>
+    <color name="blue">#54a0ff</color>
+    <color name="grayup">#3C3C3C</color>
+    <color name="gray">#373737</color>
 </resources>

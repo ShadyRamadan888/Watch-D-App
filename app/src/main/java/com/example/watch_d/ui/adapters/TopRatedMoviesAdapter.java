@@ -23,7 +23,7 @@ public class TopRatedMoviesAdapter extends RecyclerView.Adapter<TopRatedMoviesAd
     public static MovieResult movie_top_rated = new MovieResult();
     public static int pTopRatedMovies;
 
-    public TopRatedMoviesAdapter(List<MovieResult> list, Context context, MusclesListAdapteListener musclesListAdapteListener) {
+    public TopRatedMoviesAdapter( List<MovieResult> list,Context context, MusclesListAdapteListener musclesListAdapteListener) {
         this.list = list;
         this.context = context;
         this.musclesListAdapteListener = musclesListAdapteListener;
@@ -68,5 +68,15 @@ public class TopRatedMoviesAdapter extends RecyclerView.Adapter<TopRatedMoviesAd
             this.binding = binding;
 
         }
+    }
+
+    public void setUpdateData(List<MovieResult> list)
+    {
+        this.list= list;
+        notifyDataSetChanged();
+    }
+    public List<MovieResult> getList()
+    {
+        return list;
     }
 }
