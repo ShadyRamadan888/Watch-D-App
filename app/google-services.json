@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "595105167338",
+    "project_id": "watchd-e17c6",
+    "storage_bucket": "watchd-e17c6.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:595105167338:android:b604668583e2c9a312e493",
+        "android_client_info": {
+          "package_name": "com.example.watch_d"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "595105167338-832bvopvjf9g0du121kqlp9kbrjkl4p3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDfFzwMqMMuabr5ha4cUMFyqkzJjT-PHaM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "595105167338-832bvopvjf9g0du121kqlp9kbrjkl4p3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
