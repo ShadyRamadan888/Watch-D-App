@@ -4,6 +4,8 @@ package com.example.watch_d.ui.fragments;
 import static androidx.recyclerview.widget.RecyclerView.Adapter.StateRestorationPolicy.ALLOW;
 import static androidx.recyclerview.widget.RecyclerView.Adapter.StateRestorationPolicy.PREVENT_WHEN_EMPTY;
 
+import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -17,12 +19,14 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.example.watch_d.R;
 import com.example.watch_d.pojo.MovieResult;
 import com.example.watch_d.pojo.TVResult;
+import com.example.watch_d.ui.activities.Favourites;
 import com.example.watch_d.ui.adapters.PopularMoviesAdapter;
 import com.example.watch_d.ui.adapters.PopularTVAdapter;
 import com.example.watch_d.ui.adapters.SliderAdapter;
@@ -66,7 +70,7 @@ public class HomeFragment extends Fragment {
     private TopRatedMoviesAdapter topRatedMoviesAdapter;
     private SliderAdapter sliderAdapter;
     private SliderView sliderView;
-    private TrendingMovieAdapter trendingMovieAdapter ;
+    private TrendingMovieAdapter trendingMovieAdapter;
     private TextView popMovies,popTV,todayTextView,weekTextView;
 
     private Skeleton skeleton;
@@ -76,6 +80,8 @@ public class HomeFragment extends Fragment {
     MusclesListAdapteListener adapteListener;
 
     private ShowDetailsFactory showDetailsFactory;
+
+    private ImageView fav_btn;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -118,6 +124,13 @@ public class HomeFragment extends Fragment {
         Skeleton(skeleton22,skeletonObject,trendingRecyclerView,R.layout.base_item);
 
 
+        fav_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), Favourites.class);
+                startActivity(intent);
+            }
+        });
 
         getSliderImages();
         getTopRatedMovies();
@@ -132,6 +145,8 @@ public class HomeFragment extends Fragment {
 
         showDetailsFactory = new ShowDetailsFactory(view,getParentFragmentManager());
 
+
+        trendingMovieAdapter = new TrendingMovieAdapter(getContext(),showDetailsFactory);
 
         popMovies.getText();
         popTV.getText();
@@ -162,6 +177,7 @@ public class HomeFragment extends Fragment {
         skeleton3 = view.findViewById(R.id.skeleton3);
         topRatedRecyclerView = view.findViewById(R.id.recyclerViewTopRated);
 
+        fav_btn = view.findViewById(R.id.fav_btn);
     }
 
     public void getPopularMovie() {
@@ -244,7 +260,7 @@ public class HomeFragment extends Fragment {
         trendingMoviesViewMode.getTrendingLiveData().observe(getViewLifecycleOwner(), new Observer<List<MovieResult>>() {
             @Override
             public void onChanged(List<MovieResult> movieResults) {
-                trendingMovieAdapter = new TrendingMovieAdapter(movieResults, getContext(),showDetailsFactory);
+                trendingMovieAdapter.setTrendingList(movieResults);
                 trendingRecyclerView.setAdapter(trendingMovieAdapter);
             }
         });
@@ -292,14 +308,13 @@ public class HomeFragment extends Fragment {
         trendingMoviesViewMode.getTrendingWeekLiveData().observe(getViewLifecycleOwner(), new Observer<List<MovieResult>>() {
             @Override
             public void onChanged(List<MovieResult> movieResults) {
-                trendingMovieAdapter = new TrendingMovieAdapter(movieResults, getContext(),showDetailsFactory);
+                trendingMovieAdapter.setTrendingList(movieResults);
                 trendingRecyclerView.setAdapter(trendingMovieAdapter);
             }
         });
     }
 
-    public  void Skeleton(Skeleton skeleton,SkeletonRecycler skeletonObject,RecyclerView recyclerView,int layout)
-    {
+    public  void Skeleton(Skeleton skeleton,SkeletonRecycler skeletonObject,RecyclerView recyclerView,int layout) {
         skeletonObject = new SkeletonRecycler(skeleton,recyclerView,layout);
         skeletonObject.getSkeleton().showSkeleton();
     }

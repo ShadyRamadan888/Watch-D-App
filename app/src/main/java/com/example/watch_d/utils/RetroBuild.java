@@ -50,8 +50,6 @@ public class RetroBuild {
     {
         return moviesInterface.getPopularMovies("popular",key);
     }
-
-
     public Single<TVRoot> getTVPopular()
     {
             return tvInterface.getPopularTV("popular",8,key);

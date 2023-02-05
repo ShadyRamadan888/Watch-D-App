@@ -2,6 +2,8 @@ package com.example.watch_d.ui.adapters;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.graphics.drawable.Drawable;
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,8 +11,10 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.watch_d.R;
 import com.example.watch_d.databinding.BaseItemBinding;
 import com.example.watch_d.pojo.MovieResult;
+import com.example.watch_d.utils.DoubleClickListener;
 import com.example.watch_d.utils.MusclesListAdapteListener;
 
 import java.util.List;
@@ -18,6 +22,7 @@ import java.util.List;
 public class PopularMoviesAdapter extends RecyclerView.Adapter<PopularMoviesAdapter.PopularMoviesViewHolder> {
 
     List<MovieResult> list;
+    int isClicked=0;
     Context context;
     public static int p;
     public  MusclesListAdapteListener musclesListAdapteListener;
@@ -46,14 +51,16 @@ public class PopularMoviesAdapter extends RecyclerView.Adapter<PopularMoviesAdap
         MovieResult movieResult = list.get(position);
         holder.binding.setMoviePop(movieResult);
         holder.binding.executePendingBindings();
+
         holder.binding.movieImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                            p = list.indexOf(list.get(position));
-                            movie_position = list.get(position);
-                            musclesListAdapteListener.onClickItem();
+                p = list.indexOf(list.get(position));
+                movie_position = list.get(position);
+                musclesListAdapteListener.onClickItem();
             }
         });
+
     }
 
     @Override

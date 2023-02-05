@@ -262,11 +262,12 @@
     </ScrollView>
 
 
-
-
-
-
-
-
+    <ImageView
+        android:id="@+id/fav_btn"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/fav_selected"
+        android:layout_marginTop="30dp"
+        android:layout_marginStart="300dp"/>
 
 </FrameLayout>

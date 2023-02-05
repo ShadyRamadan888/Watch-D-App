@@ -1,5 +1,6 @@
 package com.example.watch_d.ui.fragments;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -23,8 +24,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.watch_d.R;
+import com.example.watch_d.database.FavouriteEntity;
 import com.example.watch_d.pojo.cast_and_crew.Cast;
 import com.example.watch_d.ui.ShowVidActivity;
+import com.example.watch_d.ui.activities.Favourites;
 import com.example.watch_d.ui.adapters.CastAdapter;
 import com.example.watch_d.ui.viewModels.CastViewModel;
 import com.example.watch_d.utils.SkeletonRecycler;
@@ -39,6 +42,9 @@ public class MovieDetailsFragment extends Fragment  {
     TextView overview,title;
     RatingBar ratingBar;
     Toolbar toolbar;
+    int isClicked = 0;
+
+    private static FavouriteEntity entity;
     private int idPopMovie = 0;
     private int idPopTV = 0;
     private int idTrendMovie = 0;
@@ -55,6 +61,7 @@ public class MovieDetailsFragment extends Fragment  {
     private List<Cast> CastList;
     private RecyclerView castRecycler;
     private Skeleton skeletonCast;
+    private ImageView bookmark;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -76,8 +83,7 @@ public class MovieDetailsFragment extends Fragment  {
         playImage = v.findViewById(R.id.play_vid_image);
         castRecycler=v.findViewById(R.id.cast_recycle);
         skeletonCast = v.findViewById(R.id.skeleton_cast);
-
-
+        bookmark = v.findViewById(R.id.bookmark);
 
         return v;
     }
@@ -159,8 +165,10 @@ public class MovieDetailsFragment extends Fragment  {
     public void getPopMovieDetails()
     {
         getParentFragmentManager().setFragmentResultListener("movieData", this, new FragmentResultListener() {
+
             @Override
             public void onFragmentResult(@NonNull String requestKey, @NonNull Bundle result) {
+                String date = result.getString("date");
                 String over = result.getString("overview");
                 overview.setText(over);
                 String movie_title = result.getString("title");
@@ -173,6 +181,15 @@ public class MovieDetailsFragment extends Fragment  {
                 Glide.with(getActivity()).load("https://image.tmdb.org/t/p/w500"+movie_image).into(movieImage);
                 idPopMovie = Integer.parseInt(result.getString("id"));
                 getMovieCast(idPopMovie);
+
+
+                bookmark.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        entity = new FavouriteEntity(idPopMovie,movie_image,movie_title,date,Float.valueOf(rating)/2);
+                        bookmark.setBackgroundResource(R.drawable.fav_selected);
+                    }
+                });
             }
         });
     }
@@ -273,6 +290,7 @@ public class MovieDetailsFragment extends Fragment  {
         ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle("");
         ((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         ((AppCompatActivity)getActivity()).getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_baseline_arrow_back_ios_new_24);
+        getPopMovieDetails();
     }
 
     public void getMovieCast(int id)
@@ -313,4 +331,10 @@ public class MovieDetailsFragment extends Fragment  {
             }
         });
     }
+
+    public static FavouriteEntity getEntity()
+    {
+        return entity;
+    }
+
 }

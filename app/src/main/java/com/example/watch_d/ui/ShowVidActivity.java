@@ -109,6 +109,7 @@ public class ShowVidActivity extends YouTubeBaseActivity {
         PopularTVAdapter.pTV = 0;
     }
 
+
     public void getTopRatedMovieVid(int id)
     {
         Single<MovieVideoRoot> observable = retroBuild.MoviesRequest().getPopMoviesVideos(id)

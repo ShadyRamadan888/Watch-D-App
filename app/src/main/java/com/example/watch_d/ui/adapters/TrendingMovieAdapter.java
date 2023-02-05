@@ -13,18 +13,18 @@ import com.example.watch_d.databinding.BaseItemBinding;
 import com.example.watch_d.pojo.MovieResult;
 import com.example.watch_d.utils.MusclesListAdapteListener;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class TrendingMovieAdapter extends RecyclerView.Adapter<TrendingMovieAdapter.TrendingViewHolder> {
 
 
     public static int pTrend;
-    List<MovieResult> arrayList;
+    List<MovieResult> arrayList=new ArrayList<>();
     public static MovieResult movie_position = new MovieResult();
     Context context;
     public MusclesListAdapteListener musclesListAdapteListener;
-    public TrendingMovieAdapter(List<MovieResult> arrayList, Context context, MusclesListAdapteListener musc) {
-        this.arrayList = arrayList;
+    public TrendingMovieAdapter(Context context, MusclesListAdapteListener musc) {
         this.context = context;
         this.musclesListAdapteListener = musc;
 
@@ -69,4 +69,8 @@ public class TrendingMovieAdapter extends RecyclerView.Adapter<TrendingMovieAdap
         }
     }
 
+    public void setTrendingList(List<MovieResult>list)
+    {
+        this.arrayList = list;
+    }
 }

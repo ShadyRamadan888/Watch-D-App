@@ -37,6 +37,7 @@ public class ShowDetailsFactory extends Fragment implements MusclesListAdapteLis
         result.putString("movieImage",PopularMoviesAdapter.movie_position.poster_path);
         result.putString("rating",String.valueOf(PopularMoviesAdapter.movie_position.vote_average));
         result.putString("id",String.valueOf(PopularMoviesAdapter.movie_position.id));
+        result.putString("date",PopularMoviesAdapter.movie_position.release_date);
         fragmentManager.setFragmentResult("movieData",result);
         navController.navigate(R.id.action_homeFragment_to_movieDetailsFragment);
     }
